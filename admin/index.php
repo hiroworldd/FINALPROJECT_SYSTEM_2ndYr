@@ -55,10 +55,9 @@
             box-shadow: inset 0 -2px 0 rgba(0,0,0,0.06);
         }
         
-        /* Updated card styles */
         #orders-list .card, #messages-list .card, #customers-list .card {
             margin-bottom: 15px;
-            background-color: #fff; /* Changed to white */
+            background-color: #fff;
             color: #000;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -145,31 +144,68 @@
             color: #666;
             margin-top: 50px;
         }
+
+       
+        .modal-backdrop.show {
+            background-color: #ffce00 !important; 
+            opacity: 1 !important;
+        }
+
+        
+        .modal {
+            background: transparent;
+        }
+
         #logoutModal .modal-content {
-            background-color: #000;
-            color: #ffce00;
+            background-color: #ffffff; 
+            color: #000; 
             border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            border: none;
         }
-        #logoutModal .modal-header, #logoutModal .modal-footer {
+
+        #logoutModal .modal-header {
+            border: none;
+            justify-content: center;
+            padding-bottom: 0.5rem;
+        }
+        #logoutModal .modal-title {
+            font-weight: 700;
+            font-size: 1.125rem;
+            text-align: center;
+        }
+        #logoutModal .modal-footer {
             border:none;
+            display:flex;
+            justify-content:center;
+            gap: 0.75rem;
+            padding-top: 0.75rem;
         }
+
         #logoutModal .btn-yes {
             background-color: #ffce00;
             color:#000;
-            font-weight:600;
+            font-weight:700;
+            border: none;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
         }
         #logoutModal .btn-yes:hover {
             background-color: #ffd633;
         }
+
         #logoutModal .btn-no {
-            background-color: #333;
-            color:#fff;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
         }
-        #logoutModal .btn-no:hover {
-            background-color: #555;
+
+        @media (max-width: 575px) {
+            #logoutModal .modal-content { margin: 0 1rem; }
         }
         
-        /* Custom logout button styling */
+
         .logout-btn {
             background-color: #ffce00;
             color: #000;
@@ -223,7 +259,7 @@
                         <button class="nav-link active" id="orders-tab" data-bs-toggle="pill" data-bs-target="#orders" type="button" role="tab">ORDERS</button>
                     </li>
                 </ul>
-                <!-- Logout button positioned beside the Orders tab -->
+                
                 <button class="logout-btn" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</button>
             </div>
         </div>
@@ -257,15 +293,16 @@
         </div>
     </div>
 
+   
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-center p-4">
-                <div class="modal-header border-0 justify-content-center">
+                <div class="modal-header">
                     <h5 class="modal-title">Do you want to logout?</h5>
                 </div>
-                <div class="modal-footer justify-content-center">
-                    <a href="../public/logout.php" class="btn btn-yes me-2">Yes</a>
-                    <button type="button" class="btn btn-no" data-bs-dismiss="modal">No</button>
+                <div class="modal-footer">
+                    <a href="../index.php" class="btn btn-yes">Yes</a>
+                    <button type="button" class="btn btn-secondary btn-no" data-bs-dismiss="modal">No</button>
                 </div>
             </div>
         </div>
@@ -384,7 +421,7 @@
                 if(!customers || !customers.length){
                     $('#customers-list').append('<p class="text-center text-muted">No customers yet.</p>');
                 } else {
-                    // Removed customer statistics section
+                   
                     customers.forEach(customer => {
                         const col = $('<div>').addClass('col-md-6 col-lg-4'); 
                         const card = $('<div>').addClass('card p-3');
